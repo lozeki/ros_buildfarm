@@ -7,5 +7,8 @@
         'echo "# BEGIN SECTION: docker info"',
         'docker info',
         'echo "# END SECTION"',
+        'echo "# BEGIN SECTION: cpu info"',
+        'lscpu',
+        'echo "# END SECTION"',
     ]),
 ))@
