@@ -40,8 +40,7 @@ RUN echo "@today_str"
 #RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python3-catkin-pkg-modules python3-rosdistro python3-yaml
 
 RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python3-catkin-pkg-modules wget python3-yaml
-RUN git clone https://github.com/ros-infrastructure/rosdistro.git && cd rosdistro
-RUN wget https://patch-diff.githubusercontent.com/raw/ros-infrastructure/rosdistro/pull/163.patch ;git apply 163.patch; pip3 install .
+RUN git clone https://github.com/ros-infrastructure/rosdistro.git && cd rosdistro; wget https://patch-diff.githubusercontent.com/raw/ros-infrastructure/rosdistro/pull/163.patch ;git apply 163.patch; pip3 install .
 
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
