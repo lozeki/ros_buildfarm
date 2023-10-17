@@ -37,7 +37,7 @@ RUN echo "@today_str"
     os_code_name=os_code_name,
 ))@
 
-RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python3-catkin-pkg-modules python3-rosdistro python3-yaml python3-pip
+RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python3-catkin-pkg-modules python3-rosdistro python3-yaml python3-pip wget
 RUN find / -name rosdistro; pip3 list
 #RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python3-catkin-pkg-modules wget python3-yaml python3-pip
 RUN git clone https://github.com/ros-infrastructure/rosdistro.git && cd rosdistro; wget https://patch-diff.githubusercontent.com/raw/ros-infrastructure/rosdistro/pull/163.patch ;git apply 163.patch; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
