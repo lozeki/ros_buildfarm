@@ -39,6 +39,7 @@ RUN echo "@today_str"
 
 RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python3-catkin-pkg-modules python3-rosdistro python3-yaml python3-pip wget
 RUN git clone https://github.com/lozeki/rosdistro.git ; cd rosdistro; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
+RUN find / -name rosdistro
 
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
