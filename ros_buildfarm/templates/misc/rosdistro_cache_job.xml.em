@@ -125,6 +125,9 @@
   </publishers>
   <buildWrappers>
 @(SNIPPET(
+    'build-wrapper_credentials-binding',
+))@
+@(SNIPPET(
     'build-wrapper_timestamper',
 ))@
 @[if git_ssh_credential_id]@
