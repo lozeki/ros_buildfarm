@@ -48,11 +48,11 @@ kwargs = {
     'maintainer': 'ROS Infrastructure Team',
     'project_urls': {
         'Source code':
-        'https://github.com/ros-infrastructure/ros_buildfarm',
+        'https://github.com/lozeki/ros_buildfarm',
         'Issue tracker':
-        'https://github.com/ros-infrastructure/ros_buildfarm/issues',
+        'https://github.com/lozeki/ros_buildfarm/issues',
     },
-    'url': 'https://github.com/ros-infrastructure/ros_buildfarm',
+    'url': 'https://github.com/lozeki/ros_buildfarm',
     'keywords': ['ROS', 'buildfarm', 'catkin'],
     'classifiers': [
         'Programming Language :: Python',
