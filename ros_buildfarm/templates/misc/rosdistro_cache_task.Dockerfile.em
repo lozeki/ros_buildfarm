@@ -43,6 +43,7 @@ RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python
 RUN pip3 install python-gitlab
 RUN python3 -V
 RUN git clone https://github.com/lozeki/rosdistro.git; cd rosdistro; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
+RUN git clone https://gitlab.fel.cvut.cz/cras/ros-release/cras_imu_tools.git
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
 @{
