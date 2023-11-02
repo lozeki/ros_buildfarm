@@ -45,7 +45,7 @@ RUN pip3 install python-gitlab
 #RUN git clone https://github.com/lozeki/rosdistro.git; cd rosdistro; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
 #RUN git clone https://gitlab.fel.cvut.cz/cras/ros-release/cras_imu_tools.git
 RUN str="git clone http://oauth2:glpat-kTETAcDJ7Bv_vsBTyyvF@""gitlab.halo.dekaresearch.com/kiwi/device/build/ros/rosdistro_setup.git"
-RUN $str; cd rosdistro_setup; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
+RUN ${str}; cd rosdistro_setup; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
 @{
