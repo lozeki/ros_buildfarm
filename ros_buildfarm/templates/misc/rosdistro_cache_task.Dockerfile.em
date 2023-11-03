@@ -6,8 +6,7 @@ FROM ubuntu:@os_code_name
 ARG GITLAB_TOKEN
 VOLUME ["/var/cache/apt/archives"]
 
-ENV DEBIAN_FRONTEND noninteractive \
-    GITLAB_TOKEN=${GITLAB_TOKEN}
+ENV DEBIAN_FRONTEND noninteractive
 
 @(TEMPLATE(
     'snippet/setup_locale.Dockerfile.em',
@@ -40,7 +39,7 @@ RUN echo "@today_str"
 ))@
 
 # Require to create a jenkins credential with Gitlab TOKEN and bind it with the variable GITLAB_TOKEN
-RUN echo 'GITLAB_TOKEN=$GITLAB_TOKEN' > .env
+RUN echo GITLAB_TOKEN=$GITLAB_TOKEN > .env
 RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python3-catkin-pkg-modules python3-rosdistro python3-yaml python3-pip wget
 RUN pip3 install python-gitlab python-dotenv
 RUN git clone https://github.com/lozeki/rosdistro.git; cd rosdistro; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
