@@ -6,7 +6,8 @@ FROM ubuntu:@os_code_name
 ARG GITLAB_TOKEN
 VOLUME ["/var/cache/apt/archives"]
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND noninteractive \
+    GITLAB_TOKEN=$GITLAB_TOKEN
 
 @(TEMPLATE(
     'snippet/setup_locale.Dockerfile.em',
