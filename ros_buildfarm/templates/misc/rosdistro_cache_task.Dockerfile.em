@@ -3,6 +3,7 @@
 @{os_code_name = 'focal'}@
 FROM ubuntu:@os_code_name
 
+ARG GITLAB_TOKEN
 VOLUME ["/var/cache/apt/archives"]
 
 ENV DEBIAN_FRONTEND noninteractive
