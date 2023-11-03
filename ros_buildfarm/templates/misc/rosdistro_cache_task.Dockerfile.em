@@ -38,14 +38,14 @@ RUN echo "@today_str"
 ))@
 
 # Require to create a jenkins credential with Gitlab TOKEN and bind it with the variable GITLAB_TOKEN
-RUN export GITLAB_TOKEN=$GITLAB_TOKEN
-RUN echo $TOKEN
 RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python3-catkin-pkg-modules python3-rosdistro python3-yaml python3-pip wget
 RUN pip3 install python-gitlab
 RUN git clone https://github.com/lozeki/rosdistro.git; cd rosdistro; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
-RUN git clone https://gitlab.fel.cvut.cz/cras/ros-release/cras_imu_tools.git
+
+#RUN git clone https://gitlab.fel.cvut.cz/cras/ros-release/cras_imu_tools.git
 #RUN str="git clone http://oauth2:glpat-kTETAcDJ7Bv_vsBTyyvF@""gitlab.halo.dekaresearch.com/kiwi/device/build/ros/rosdistro_setup.git"
 #RUN ${str}; cd rosdistro_setup; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
+
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
 @{
