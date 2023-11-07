@@ -16,7 +16,8 @@ import os
 import subprocess
 
 from ros_buildfarm.common import get_os_package_name
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def _get_source_tag(
         rosdistro_name, pkg_name, pkg_version, os_name, os_code_name):
@@ -47,7 +48,9 @@ def build_sourcerpm(
         rosdistro_name, pkg_name, pkg_version, os_name, os_code_name)
     os_pkg_name = get_os_package_name(rosdistro_name, pkg_name)
     release_repository_url = repo.release_repository.url
-
+    if ('gitlab-prod.halo.halo-deka.com' in url):
+        GITLAB_TOKEN = os.getenv("GITLAB_TOKEN")
+        release_repository_url = release_repository_url.replace("https://", "https://build-farmer:"+GITLAB_TOKEN+"@")
     clone_cmd = [
         'git', 'clone',
         '--branch', tag,
