@@ -187,14 +187,13 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
 @(SNIPPET(
     'build-wrapper_timestamper',
 ))@
-@{
-credential_ids = [credential_id]
-if git_ssh_credential_id:
-    credential_ids.append(git_ssh_credential_id)
-}@
+@(SNIPPET(
+    'build-wrapper_credentials-binding',
+))@
+@[if git_ssh_credential_id]@
 @(SNIPPET(
     'build-wrapper_ssh-agent',
-    credential_ids=credential_ids,
+    credential_ids=[git_ssh_credential_id],
 ))@
   </buildWrappers>
 </project>
