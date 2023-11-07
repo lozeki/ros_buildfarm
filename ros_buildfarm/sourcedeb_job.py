@@ -19,7 +19,8 @@ from urllib.request import urlretrieve
 
 from ros_buildfarm.common import get_os_package_name
 from ros_buildfarm.release_common import dpkg_parsechangelog
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def get_sources(
         rosdistro_index_url, rosdistro_name, pkg_name, os_name, os_code_name,
@@ -40,13 +41,16 @@ def get_sources(
     pkg_version = repo.release_repository.version
     tag = _get_source_tag(
         rosdistro_name, pkg_name, pkg_version, os_name, os_code_name)
-
+    url = repo.release_repository.url
+    if ('gitlab-prod.halo.halo-deka.com' in url):
+        GITLAB_TOKEN = os.getenv("GITLAB_TOKEN")
+        url = url.replace("https://", "https://build-farmer:"+GITLAB_TOKEN+"@")
     cmd = [
         'git', 'clone',
         '--branch', tag,
         # fetch all branches and tags but no history
         '--depth', '1', '--no-single-branch',
-        repo.release_repository.url, sources_dir]
+        url, sources_dir]
 
     print("Invoking '%s'" % ' '.join(cmd))
     subprocess.check_call(cmd)
