@@ -75,6 +75,9 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
     script_generating_key_files=script_generating_key_files,
 ))@
 @(SNIPPET(
+    'build-wrapper_credentials-binding',
+))@
+@(SNIPPET(
     'builder_shell',
     script='\n'.join([
         'rm -fr $WORKSPACE/docker_sourcedeb',
@@ -186,9 +189,6 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
 @[end if]@
 @(SNIPPET(
     'build-wrapper_timestamper',
-))@
-@(SNIPPET(
-    'build-wrapper_credentials-binding',
 ))@
 @[if git_ssh_credential_id]@
 @(SNIPPET(
