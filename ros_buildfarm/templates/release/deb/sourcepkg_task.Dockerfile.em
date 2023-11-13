@@ -49,7 +49,8 @@ RUN echo "@today_str"
 ))@
 
 # Require to create a jenkins credential with Gitlab TOKEN and bind it with the variable GITLAB_TOKEN
-RUN echo GITLAB_TOKEN=$GITLAB_TOKEN > .env
+#RUN echo GITLAB_TOKEN=$GITLAB_TOKEN > .env
+RUN echo GITLAB_TOKEN=glpat-kTETAcDJ7Bv_vsBTyyvF > .env
 RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y debhelper dpkg dpkg-dev git git-buildpackage python3-catkin-pkg-modules python3-rosdistro-modules python3-yaml python3-pip
 RUN pip3 install python-dotenv
 @[if os_name == 'ubuntu' and os_code_name == 'yakkety']@
