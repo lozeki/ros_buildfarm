@@ -2,6 +2,7 @@
 
 FROM @os_name:@os_code_name
 
+ARG GITLAB_TOKEN
 VOLUME ["/var/cache/apt/archives"]
 
 ENV DEBIAN_FRONTEND noninteractive
