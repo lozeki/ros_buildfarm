@@ -53,8 +53,6 @@ RUN echo "@today_str"
 RUN echo GITLAB_TOKEN=$GITLAB_TOKEN > .env
 RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y debhelper dpkg dpkg-dev git git-buildpackage python3-catkin-pkg-modules python3-rosdistro-modules python3-yaml python3-pip
 RUN pip3 install python-dotenv
-#RUN pip3 install python-gitlab python-dotenv
-#RUN git clone https://github.com/lozeki/rosdistro.git; cd rosdistro; pip3 install . --upgrade --target=/usr/lib/python3/dist-packages
 @[if os_name == 'ubuntu' and os_code_name == 'yakkety']@
 @# git-buildpackage in Yakkety has a bug resulting in using the current time for
 @# the to be archived files resulting in non-deterministic checksums for the tarball
