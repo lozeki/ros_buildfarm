@@ -12,10 +12,12 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
     days_to_keep=730,
     num_to_keep=30,
 ))@
+@[if github_url]@
 @(SNIPPET(
     'property_github-project',
     project_url=github_url,
 ))@
+@[end if]@
 @[if job_priority is not None]@
 @(SNIPPET(
     'property_job-priority',
