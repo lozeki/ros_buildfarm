@@ -17,6 +17,13 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
     'property_github-project',
     project_url=github_url,
 ))@
+@[else]@
+@(SNIPPET(
+    'scm',
+    repo_spec=binary_repo_spec,
+    path='ws/src/%s' % binary_repo_spec.name,
+    git_ssh_credential_id=git_ssh_credential_id,
+))@
 @[end if]@
 @[if job_priority is not None]@
 @(SNIPPET(
