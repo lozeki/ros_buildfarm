@@ -635,7 +635,7 @@ def _get_sourcedeb_job_config(
                 rosdistro_name, 'source', package_format))),
 
         'disabled': is_disabled,
-
+        'source_repo_spec': release_repository,
         'ros_buildfarm_repository': get_repository(),
 
         'script_generating_key_files': script_generating_key_files,
@@ -716,7 +716,7 @@ def _get_binarydeb_job_config(
                 rosdistro_name, 'binary', package_format, release_build_name))),
 
         'disabled': is_disabled,
-
+        'binary_repo_spec': release_repository,
         'upstream_projects': upstream_job_names,
 
         'ros_buildfarm_repository': get_repository(),
