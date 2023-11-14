@@ -755,7 +755,7 @@ def _get_binarydeb_job_config(
         'credential_id': build_file.upload_credential_id,
         'credential_id_pulp': build_file.upload_credential_id_pulp,
         'dest_credential_id': build_file.upload_destination_credential_id,
-
+        'git_ssh_credential_id': config.git_ssh_credential_id,
         'shared_ccache': build_file.shared_ccache,
     }
     job_config = expand_template(template_name, job_data)
