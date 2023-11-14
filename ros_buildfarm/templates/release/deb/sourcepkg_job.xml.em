@@ -191,20 +191,13 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
     'build-wrapper_credentials-binding',
 ))@
 @{
-@(SNIPPET(
 credential_ids = [credential_id]
-    'build-wrapper_credentials-binding',
 if git_ssh_credential_id:
-))@
     credential_ids.append(git_ssh_credential_id)
-@[if git_ssh_credential_id]@
 }@
 @(SNIPPET(
-@(SNIPPET(
-    'build-wrapper_ssh-agent',
     'build-wrapper_ssh-agent',
     credential_ids=credential_ids,
-    credential_ids=[git_ssh_credential_id],
 ))@
   </buildWrappers>
 </project>
