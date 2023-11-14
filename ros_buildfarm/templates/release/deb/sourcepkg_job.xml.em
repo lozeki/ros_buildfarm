@@ -17,13 +17,6 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
     'property_github-project',
     project_url=github_url,
 ))@
-@[else]@
-@(SNIPPET(
-    'scm',
-    repo_spec=source_repo_spec,
-    path='ws/src/%s' % source_repo_spec.name,
-    git_ssh_credential_id=git_ssh_credential_id,
-))@
 @[end if]@
 @[if job_priority is not None]@
 @(SNIPPET(
@@ -51,9 +44,19 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
     'property_job-weight',
 ))@
   </properties>
+@[if not github_url]@
+@(SNIPPET(
+    'scm',
+    repo_spec=source_repo_spec,
+    path='ws/src/%s' % source_repo_spec.name,
+    git_ssh_credential_id=git_ssh_credential_id,
+))@
+  <scmCheckoutRetryCount>2</scmCheckoutRetryCount>
+@[else]@
 @(SNIPPET(
     'scm_null',
 ))@
+@[end if]@
   <assignedNode>@(node_label)</assignedNode>
   <canRoam>false</canRoam>
   <disabled>@('true' if disabled else 'false')</disabled>
