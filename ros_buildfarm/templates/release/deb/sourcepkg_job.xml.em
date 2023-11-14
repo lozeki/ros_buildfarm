@@ -46,9 +46,11 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
   </properties>
 @[if not github_url]@
 @(SNIPPET(
-    'scm',
-    repo_spec=source_repo_spec,
-    path='ws/src/%s' % source_repo_spec.name,
+    'scm_git',
+    url=repo_spec.url,
+    branch_name=branch_name,
+    relative_target_dir='ws/src/%s' % repo_spec.name,
+    refspec=None,
     git_ssh_credential_id=git_ssh_credential_id,
 ))@
   <scmCheckoutRetryCount>2</scmCheckoutRetryCount>
