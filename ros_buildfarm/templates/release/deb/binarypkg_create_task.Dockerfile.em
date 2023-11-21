@@ -68,6 +68,7 @@ RUN . /etc/os-release && test "$VERSION_ID" = "20.04" && test "$(uname -m)" = "a
 
 # always invalidate to actually have the latest apt repo state
 RUN echo "@now_str"
+RUN apt-get update
 RUN python3 -u /tmp/wrapper_scripts/apt.py update
 
 USER buildfarm
