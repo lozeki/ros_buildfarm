@@ -92,7 +92,7 @@ USER buildfarm
 ENTRYPOINT ["sh", "-c"]
 @{
 cmd = \
-    'PYTHONPATH=/tmp/ros_buildfarm:$PYTHONPATH' + \
+    'PYTHONPATH=/tmp/ros_buildfarm:/opt/ros/noetic/lib/python3/dist-packages:$PYTHONPATH' + \
     ' PATH=/usr/lib/ccache:$PATH' + \
     ' python3 -u' + \
     ' /tmp/ros_buildfarm/scripts/release/build_binarydeb.py' + \
