@@ -262,6 +262,14 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
         'debian_package_name=%s' % debian_package_name]),
     continue_on_failure=False,
 ))@
+@(SNIPPET(
+    'builder_parameterized-trigger',
+    project='upload_artifactory',
+    parameter_files=None,
+    parameters='\n'.join([
+        'DEB_PATH=${WORKSPACE}/binarydeb']),
+    continue_on_failure=False,
+))@
   </builders>
   <publishers>
 @(SNIPPET(
