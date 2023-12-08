@@ -85,7 +85,7 @@ RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y abi-compli
 @[end if]@
 RUN pip3 install -U auto_abi_checker
 @[end if]@
-
+RUN apt install -y python3-catkin-tools
 @(TEMPLATE(
     'snippet/set_environment_variables.Dockerfile.em',
     environment_variables=build_environment_variables,
@@ -114,7 +114,7 @@ ENTRYPOINT ["sh", "-c"]
 @{
 cmd = \
     'PATH=/usr/lib/ccache:$PATH' + \
-    ' PYTHONPATH=/tmp/ros_buildfarm:$PYTHONPATH python3 -u'
+    ' PYTHONPATH=/tmp/ros_buildfarm:/opt/ros/noetic/lib/python3/dist-packages:$PYTHONPATH python3 -u'
 if not testing:
     cmd += \
         ' /tmp/ros_buildfarm/scripts/devel/build_and_install.py' + \
