@@ -67,6 +67,11 @@ def call_build_tool(
             # override shebang line if necessary
             if ros_python_version == '3':
                 cmd.append('python3')
+        elif os.path.exists('/opt/ros/noetic/bin/catkin_make_isolated'):
+            script_name = '/opt/ros/noetic/bin/catkin_make_isolated'
+            ros_python_version = (env or os.environ).get('ROS_PYTHON_VERSION')
+            if ros_python_version == '3':
+                cmd.append('python3')                
     cmd.append(script_name)
 
     if build_tool == 'colcon':
