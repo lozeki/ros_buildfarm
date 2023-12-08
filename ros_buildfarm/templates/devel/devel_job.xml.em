@@ -72,6 +72,15 @@ if pull_request:
     merge_branch=source_repo_spec.version,
 ))@
 @[end if]@
+@(SNIPPET(
+    'scm_git',
+    url=source_repo_spec.url,
+    refspec='+refs/pull/*:refs/remotes/origin/pr/*',
+    branch_name='${sha1}',
+    relative_target_dir='ws/src/%s' % source_repo_spec.name,
+    git_ssh_credential_id=git_ssh_credential_id,
+    merge_branch=source_repo_spec.version,
+))@
   <scmCheckoutRetryCount>2</scmCheckoutRetryCount>
   <assignedNode>@(node_label)</assignedNode>
   <canRoam>false</canRoam>
