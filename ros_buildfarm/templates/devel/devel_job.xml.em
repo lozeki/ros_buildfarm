@@ -74,12 +74,11 @@ if pull_request:
 @[end if]@
 @(SNIPPET(
     'scm_git',
-    url=source_repo_spec.url,
-    refspec='+refs/pull/*:refs/remotes/origin/pr/*',
-    branch_name='${sha1}',
-    relative_target_dir='ws/src/%s' % source_repo_spec.name,
-    git_ssh_credential_id=git_ssh_credential_id,
-    merge_branch=source_repo_spec.version,
+    url='https://gitlab-prod.halo.halo-deka.com/kiwi/device/build/ros/catkin.git',
+    refspec=None,
+    branch_name='noetic-devel',
+    relative_target_dir='ws/src/catkin',
+    git_ssh_credential_id='100e',
 ))@
   <scmCheckoutRetryCount>2</scmCheckoutRetryCount>
   <assignedNode>@(node_label)</assignedNode>
