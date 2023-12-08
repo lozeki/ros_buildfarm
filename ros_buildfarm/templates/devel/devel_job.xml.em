@@ -72,6 +72,14 @@ if pull_request:
     merge_branch=source_repo_spec.version,
 ))@
 @[end if]@
+@(SNIPPET(
+    'scm_git',
+    url='https://gitlab-prod.halo.halo-deka.com/kiwi/device/build/ros/catkin.git',
+    refspec=None,
+    branch_name='noetic-devel',
+    relative_target_dir='ws/src/catkin',
+    git_ssh_credential_id='100e',
+))@
   <scmCheckoutRetryCount>2</scmCheckoutRetryCount>
   <assignedNode>@(node_label)</assignedNode>
   <canRoam>false</canRoam>
