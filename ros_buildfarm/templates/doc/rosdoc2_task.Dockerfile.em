@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND noninteractive
     'snippet/setup_locale.Dockerfile.em',
     timezone=timezone,
 ))@
-
+RUN apt install -y python3-catkin-tools
 RUN useradd -u @uid -l -m buildfarm
 
 @(TEMPLATE(
@@ -46,7 +46,7 @@ RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y -o Debug::
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
 @{
-cmd = 'PYTHONPATH=/tmp/ros_buildfarm:$PYTHONPATH python3 -u' + \
+cmd = 'PYTHONPATH=/tmp/ros_buildfarm:/opt/ros/noetic/lib/python3/dist-packages:$PYTHONPATH python3 -u' + \
     ' /tmp/ros_buildfarm/scripts/doc/build_rosdoc2.py' + \
     ' --workspace-root /tmp/ws' + \
     ' --rosdoc2-dir /tmp/rosdoc2'
