@@ -15,7 +15,6 @@ ENV DEBIAN_FRONTEND noninteractive
     'snippet/setup_locale.Dockerfile.em',
     timezone=timezone,
 ))@
-RUN apt install -y python3-catkin-tools
 RUN useradd -u @uid -l -m buildfarm
 
 @(TEMPLATE(
@@ -42,7 +41,7 @@ RUN echo "@today_str"
 ))@
 
 RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y -o Debug::pkgProblemResolver=yes build-essential python3-catkin-pkg-modules doxygen graphviz openssh-client python3 python3-yaml python3-pip rsync
-
+RUN apt install -y python3-catkin-tools
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
 @{
