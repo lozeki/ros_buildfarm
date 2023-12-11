@@ -309,7 +309,7 @@ else:
     'build-wrapper_timestamper',
 ))@
 @(SNIPPET(
-    'build-wrapper_ssh-agent',
+    'build-wrapper_my_ssh-agent',
     credential_ids=[credential_id],
 ))@
   </buildWrappers>
