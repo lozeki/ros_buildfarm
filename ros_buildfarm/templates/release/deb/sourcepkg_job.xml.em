@@ -205,7 +205,7 @@ but disabled since the package is blacklisted (or not whitelisted) in the config
     'build-wrapper_credentials-binding',
 ))@
 @(SNIPPET(
-    'build-wrapper_ssh-agent',
+    'build-wrapper_my_ssh-agent',
     credential_ids=[credential_id],
 ))@
   </buildWrappers>
