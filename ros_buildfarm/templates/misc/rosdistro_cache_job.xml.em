@@ -132,7 +132,7 @@
 ))@
 @[if git_ssh_credential_id]@
 @(SNIPPET(
-    'build-wrapper_ssh-agent',
+    'build-wrapper_ssh-master',
     credential_ids=[git_ssh_credential_id],
 ))@
 @[end if]@
