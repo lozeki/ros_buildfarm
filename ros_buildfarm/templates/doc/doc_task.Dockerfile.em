@@ -85,7 +85,7 @@ RUN wget --no-verbose http://us.archive.ubuntu.com/ubuntu/pool/main/d/doxygen/do
 RUN dpkg -i /tmp/doxygen_1.7.6.1-2ubuntu1_amd64.deb
 RUN doxygen --version
 @[end if]@
-RUN apt install -y python3-catkin-tools
+RUN apt-get install -y python3-catkin-tools python3-genmsg
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
 @{
