@@ -85,7 +85,7 @@ RUN wget --no-verbose http://us.archive.ubuntu.com/ubuntu/pool/main/d/doxygen/do
 RUN dpkg -i /tmp/doxygen_1.7.6.1-2ubuntu1_amd64.deb
 RUN doxygen --version
 @[end if]@
-
+RUN apt install -y python3-catkin-tools
 USER buildfarm
 ENTRYPOINT ["sh", "-c"]
 @{
@@ -93,7 +93,7 @@ ENTRYPOINT ["sh", "-c"]
 pkg_tuples = []
 for pkg_path, pkg in ordered_pkg_tuples:
     pkg_tuples.append('%s:%s:%s' % (pkg.name, pkg_path, rosdoc_config_files.get(pkg.name, '')))
-cmd = 'PYTHONPATH=/tmp/ros_buildfarm:$PYTHONPATH python3 -u' + \
+cmd = 'PYTHONPATH=/tmp/ros_buildfarm:/opt/ros/noetic/lib/python3/dist-packages:$PYTHONPATH python3 -u' + \
     ' /tmp/ros_buildfarm/scripts/doc/build_doc.py' + \
     ' --rosdistro-name ' + rosdistro_name + \
     ' --os-code-name ' + os_code_name + \
